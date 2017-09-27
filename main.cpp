@@ -12,6 +12,7 @@
  */
 
 #include <cstdlib>
+#include <valarray>
 #include "Array.h"
 
 using namespace std;
@@ -20,18 +21,35 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-    
+
     Array Array1;
-    Array Array2(200);
-    Array Array3(300, -10);
-    
-//    
+    Array Array2;
+    //    Array Array3(300, -10);
+
     Array1.print();
     Array2.print();
-    Array3.print();
-//    Array1.getSize();
-//    Array1.insert(3, -10);
-//    Array1.delete(5);
+
+    if(Array1.equal(Array2)){
+        cout << "Array1 and Array2 are equal" << endl;
+    } else {
+        cout << "Array1 and Array2 are not equal" << endl;
+    }
+    
+    //    Array3.print();    
+
+//    cout << "After the alternation\n";
+//    Array1.setData(3, -10);
+//    Array1.print();
+//    Array2.print();
+//
+//    cout << "After the assignment" << endl;
+//    Array2 = Array1;
+//    Array1.print();
+//    Array2.print();
+
+    //    Array1.getSize();
+    //    Array1.insert(3, -10);
+    //    Array1.delete(5);
 
     return 0;
 }

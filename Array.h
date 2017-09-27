@@ -21,14 +21,23 @@ public:
     Array();
     Array(int _size);
     Array(int _size, double value);
-    
-//    Array(const Array& orig);
+
+    //    Array(const Array& orig);
     ~Array();
-    
+
     void print();
+    void expand();
+
+    int getSize();
+    double getData(int index);
+    void setData(int index, double value);
+    bool equal(Array &rhs);
+
+
 private:
     double *data;
     int size;
+    void setSize(int value);
 };
 
 #endif /* ARRAY_H */
