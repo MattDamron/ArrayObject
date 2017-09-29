@@ -22,16 +22,16 @@ public:
     Array(int _size);
     Array(int _size, double value);
 
-    //    Array(const Array& orig);
+    Array(const Array& orig);
     ~Array();
 
-    void print();
+    void print() const;
     void expand();
 
-    int getSize();
-    double getData(int index);
+    int getSize() const;
+    double getData(int index) const;
     void setData(int index, double value);
-    bool equal(Array &rhs);
+    bool equal(const Array &rhs) const;
 
 
 private:

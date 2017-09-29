@@ -23,16 +23,24 @@ using namespace std;
 int main(int argc, char** argv) {
 
     Array Array1;
-    Array Array2;
+    Array Array2(10,-20);
+    Array copyOfArray2(Array2);
     //    Array Array3(300, -10);
 
     Array1.print();
     Array2.print();
+    copyOfArray2.print();
 
     if(Array1.equal(Array2)){
         cout << "Array1 and Array2 are equal" << endl;
     } else {
         cout << "Array1 and Array2 are not equal" << endl;
+    }
+    
+    if(Array2.equal(copyOfArray2)) {
+        cout << "Array2 and copyOfArray2 are equal" << endl;
+    } else {
+                cout << "Array2 and copyOfArray2 are NOT equal" << endl;
     }
     
     //    Array3.print();    

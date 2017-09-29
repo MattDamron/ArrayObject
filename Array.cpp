@@ -39,14 +39,18 @@ Array::Array(int _size, double value) : size(_size) {
     }
 }
 
-//Array::Array(const Array& orig) {
-//}
+Array::Array(const Array& orig) {
+    setSize(orig.getSize());
+    for (int i = 0; i < getSize(); i++) {
+        setData(i, orig.getData(i));
+    }
+}
 
 Array::~Array() {
     delete [] data;
 }
 
-int Array::getSize() {
+int Array::getSize() const {
     return size;
 }
 
@@ -64,7 +68,7 @@ void Array::setData(int index, double value) {
     }
 }
 
-double Array::getData(int index) {
+double Array::getData(int index) const {
     if ((index >= 0) && (index < size)) {
         return data[index];
     } else {
@@ -72,7 +76,7 @@ double Array::getData(int index) {
     }
 }
 
-void Array::print() {
+void Array::print() const {
     for (int i = 0; i < size; i++) {
         cout << data[i] << " ";
     }
@@ -99,16 +103,16 @@ void Array::expand() {
     //        myArray[i] = localArray[i];
     //    }
     //    delete [] localArray;
-} 
+}
 
-bool Array::equal(Array& rhs) {
+bool Array::equal(const Array& rhs) const {
     bool result(true);
-    
-    if(getSize() != rhs.getSize()) {
+
+    if (getSize() != rhs.getSize()) {
         result = false;
     } else {
-        for(int i =0; i < getSize(); i++) {
-            if(getData(i) != rhs.getData(i)){
+        for (int i = 0; i < getSize(); i++) {
+            if (getData(i) != rhs.getData(i)) {
                 result = false;
             }
         }
