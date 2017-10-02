@@ -21,7 +21,6 @@ public:
     Array();
     Array(int _size);
     Array(int _size, double value);
-
     Array(const Array& orig);
     ~Array();
 
@@ -30,9 +29,13 @@ public:
 
     int getSize() const;
     double getData(int index) const;
-    void setData(int index, double value);
-    bool equal(const Array &rhs) const;
+    double operator[](int index) const;
 
+    void setData(int index, double value);
+    bool equal(const Array& rhs) const;
+    bool operator==(const Array& rhs) const;
+    bool operator!=(const Array& rhs) const;
+    void operator=(const Array& rhs);
 
 private:
     double *data;

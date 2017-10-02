@@ -24,7 +24,7 @@ Array::Array() : size(10) {
 }
 
 Array::Array(int _size) : size(_size) {
-    //    size = _size;
+    size = _size;
     data = new double [size];
     for (int i = 0; i < size; i++) {
         data[i] = i;
@@ -41,6 +41,7 @@ Array::Array(int _size, double value) : size(_size) {
 
 Array::Array(const Array& orig) {
     setSize(orig.getSize());
+    data = new double [getSize()];
     for (int i = 0; i < getSize(); i++) {
         setData(i, orig.getData(i));
     }
@@ -69,6 +70,14 @@ void Array::setData(int index, double value) {
 }
 
 double Array::getData(int index) const {
+    if ((index >= 0) && (index < size)) {
+        return data[index];
+    } else {
+        return data[size - 1];
+    }
+}
+
+double Array::operator[](int index) const {
     if ((index >= 0) && (index < size)) {
         return data[index];
     } else {
@@ -118,4 +127,28 @@ bool Array::equal(const Array& rhs) const {
         }
     }
     return result;
+}
+
+bool Array::operator==(const Array& rhs) const {
+    bool result(true);
+
+    if (getSize() != rhs.getSize()) {
+        result = false;
+    } else {
+        for (int i = 0; i < getSize(); i++) {
+            if (getData(i) != rhs.getData(i)) {
+                result = false;
+            }
+        }
+    }
+    return result;
+}
+
+void Array::operator=(const Array& rhs){
+    delete [] data;
+    setSize(rhs.getSize());
+    data = new double [getSize()];
+    for(int i=0; i < size; i++) {
+        data[i] = rhs[i];
+    }
 }
