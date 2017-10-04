@@ -36,6 +36,7 @@ public:
     bool operator==(const Array& rhs) const;
     bool operator!=(const Array& rhs) const;
     void operator=(const Array& rhs);
+    void operator+(const Array& rhs);
 
 private:
     double *data;

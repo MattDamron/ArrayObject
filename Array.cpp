@@ -166,3 +166,13 @@ void Array::operator=(const Array& rhs){
         data[i] = rhs[i];
     }
 }
+
+void Array::operator+(const Array& rhs) {
+    if(this->getSize() != rhs.getSize()){
+        cout << "Array sizes are not compatible." << endl;
+    } else {
+        for(int i=0; i < getSize(); i++){
+            data[i] += rhs[i];
+        }
+    }
+}

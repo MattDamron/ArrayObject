@@ -62,6 +62,8 @@ int main(int argc, char** argv) {
 
     Array3 = Array2;
     Array3.print();
+    Array3 + Array2;
+    Array3.print();
 
     //    Array3.print();    
 
