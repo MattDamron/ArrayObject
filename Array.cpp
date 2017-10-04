@@ -144,6 +144,20 @@ bool Array::operator==(const Array& rhs) const {
     return result;
 }
 
+bool Array::operator!=(const Array& rhs) const {
+    bool result(false);
+    if(getSize() != rhs.getSize()) {
+        result = true;
+    }
+    
+    for(int i=0; i < getSize(); i++){
+        if(data[i] != rhs[i]) {
+        result = true;
+        }
+    }
+    return result;
+}
+
 void Array::operator=(const Array& rhs){
     delete [] data;
     setSize(rhs.getSize());
