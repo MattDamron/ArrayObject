@@ -146,33 +146,38 @@ bool Array::operator==(const Array& rhs) const {
 
 bool Array::operator!=(const Array& rhs) const {
     bool result(false);
-    if(getSize() != rhs.getSize()) {
+
+    if (getSize() != rhs.getSize()) {
         result = true;
-    }
-    
-    for(int i=0; i < getSize(); i++){
-        if(data[i] != rhs[i]) {
-        result = true;
+    } else {
+
+        for (int i = 0; i < getSize(); i++) {
+            if (data[i] != rhs[i]) {
+                result = true;
+            }
         }
     }
     return result;
+    //    return !(*this == rhs);
 }
 
-void Array::operator=(const Array& rhs){
+void Array::operator=(const Array& rhs) {
     delete [] data;
     setSize(rhs.getSize());
     data = new double [getSize()];
-    for(int i=0; i < size; i++) {
+    for (int i = 0; i < size; i++) {
         data[i] = rhs[i];
     }
 }
 
-void Array::operator+(const Array& rhs) {
-    if(this->getSize() != rhs.getSize()){
-        cout << "Array sizes are not compatible." << endl;
+Array Array::operator+(const Array & rhs) {
+    Array Cookies(rhs);
+    if (getSize() != rhs.getSize()) {
+        cout << "Exception" << endl;
     } else {
-        for(int i=0; i < getSize(); i++){
-            data[i] += rhs[i];
+        for (int i = 0; i < getSize(); i++) {
+            Cookies.setData(i,Cookies[i] + data[i]);
         }
     }
+    return Cookies;
 }
