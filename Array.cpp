@@ -11,7 +11,6 @@
  * Created on September 22, 2017, 1:22 PM
  */
 
-#include <valarray>
 
 #include "Array.h"
 
