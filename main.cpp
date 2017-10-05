@@ -12,7 +12,6 @@
  */
 
 #include <cstdlib>
-#include <valarray>
 #include "Array.h"
 
 using namespace std;
@@ -35,10 +34,6 @@ int main(int argc, char** argv) {
     Array2.print();
     copyOfArray2.print();
     Array3.print();
-
-
-
-
 
     cout << endl << "Test of overloaded ==" << endl;
     if (Array2 == copyOfArray2) {
