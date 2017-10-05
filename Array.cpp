@@ -176,8 +176,17 @@ Array Array::operator+(const Array & rhs) {
         cout << "Exception" << endl;
     } else {
         for (int i = 0; i < getSize(); i++) {
-            Cookies.setData(i,Cookies[i] + data[i]);
+            Cookies.setData(i, Cookies[i] + data[i]);
         }
     }
     return Cookies;
 }
+
+void Array::printMyInfo() {
+    cout << "I am at: " << this << endl;
+    cout << "My data is at: " << &data << endl;
+    cout << "My size is at: " << &size << " with a value of : " << size << endl;
+    cout << "My data points to: " << data << endl;
+    cout << "The first item in data is: " << *data << endl;
+}
+
