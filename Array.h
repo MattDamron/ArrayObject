@@ -37,7 +37,7 @@ public:
     bool operator==(const Array& rhs) const;
     bool operator!=(const Array& rhs) const;
     void operator=(const Array& rhs);
-    Array operator+(const Array & rhs);
+    const Array operator+(const Array & rhs) const;
     void printMyInfo();
 
 private:

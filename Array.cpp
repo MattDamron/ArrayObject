@@ -169,13 +169,13 @@ void Array::operator=(const Array& rhs) {
     }
 }
 
-Array Array::operator+(const Array & rhs) {
-    Array Cookies(rhs);
+const Array Array::operator+(const Array & rhs) const {
+    Array Cookies(rhs); //Disclaimer, Jonathan made me do this. Bad programming practice. 
     if (getSize() != rhs.getSize()) {
         cout << "Exception" << endl;
     } else {
         for (int i = 0; i < getSize(); i++) {
-            Cookies.setData(i, Cookies[i] + data[i]);
+            Cookies.setData(i, rhs[i] + data[i]);
         }
     }
     return Cookies;
