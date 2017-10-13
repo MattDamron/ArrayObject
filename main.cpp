@@ -29,6 +29,12 @@ int main(int argc, char** argv) {
     cout << "Test of printInfo for Array1" << endl;
     cout << &Array1 << endl;
     Array1.printMyInfo();
+    
+    cout << Array1 << endl;
+    cin >> Array1;
+    cout << Array1 << endl;
+    cout << ++Array1 << endl;
+    cout << Array1 << endl;
 
 //    cout << endl << "Test of print" << endl;
 //    Array1.print();
@@ -58,15 +64,16 @@ int main(int argc, char** argv) {
 //    Array1.print();
 //    Array4.print();
 //
-    cout << endl << "Test of the operator+" << endl;
-    cout << "Array2 and Array 3 before +" << endl;
-    Array2.print();
-    Array3.print();
-    cout << "The sum of the two: " << endl;
-    Array1 = Array2 + Array3 + Array4;
-    cout << "Array2 and Array 3 after +" << endl;
-    Array2.print();
-    Array3.print();
+//    cout << endl << "Test of the operator+" << endl;
+//    cout << "Array2 and Array 3 before +" << endl;
+//    cout << Array2;
+////    Array2.print();
+//    Array3.print();
+//    cout << "The sum of the two: " << endl;
+//    Array1 = Array2 + Array3 + Array4;
+//    cout << "Array2 and Array 3 after +" << endl;
+//    Array2.print();
+//    Array3.print();
 
     return 0;
 }

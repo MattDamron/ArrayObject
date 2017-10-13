@@ -181,7 +181,23 @@ const Array Array::operator+(const Array & rhs) const {
     return Cookies;
 }
 
-void Array::printMyInfo() {
+const Array Array::operator++() {
+    for(int i=0; i < getSize(); i++) {
+        data[i]++;
+    }
+    return *this;
+}
+
+const Array Array::operator++(int dummy) {
+    Array temp(*this);
+    
+    for(int i=0; i < getSize(); i++) {
+        data[i]++;
+    }
+    return temp;
+}
+
+void Array::printMyInfo() const {
     cout << "I am at: " << this << endl;
     cout << "My data is at: " << &data << endl;
     cout << "My size is at: " << &size << " with a value of : " << size << endl;
@@ -189,3 +205,19 @@ void Array::printMyInfo() {
     cout << "The first item in data is: " << *data << endl;
 }
 
+ostream & operator<<(ostream &lhs, const Array &rhs) {
+    for (int i = 0; i < rhs.getSize(); i++) {
+        lhs << rhs[i] << " ";
+    }
+    cout << endl;
+    return lhs;
+}
+
+istream & operator>>(istream &lhs, Array &rhs) {
+    double temp;
+    for (int i = 0; i < rhs.getSize(); i++) {
+        lhs >> temp;
+        rhs.setData(i, temp);
+    }
+    return lhs;
+}

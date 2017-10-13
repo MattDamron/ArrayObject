@@ -18,6 +18,8 @@
 using namespace std;
 
 class Array {
+    friend ostream & operator<<(ostream &lhs, const Array &rhs);
+    friend istream & operator>>(istream &lhs, Array &rhs);
 public:
     Array();
     Array(int _size);
@@ -37,8 +39,10 @@ public:
     bool operator==(const Array& rhs) const;
     bool operator!=(const Array& rhs) const;
     void operator=(const Array& rhs);
+    const Array operator++(); //prefix ++Array
+    const Array operator++(int dummy); //postfix Array++
     const Array operator+(const Array & rhs) const;
-    void printMyInfo();
+    void printMyInfo() const;
 
 private:
     double *data;
