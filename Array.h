@@ -17,13 +17,16 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
 class Array {
-    friend ostream & operator<<(ostream &lhs, const Array &rhs);
-    friend istream & operator>>(istream &lhs, Array &rhs);
+    template <class U>
+    friend ostream & operator<<(ostream &lhs, const Array<U> &rhs);
+    template <class U>
+    friend istream & operator>>(istream &lhs, Array<U> &rhs);
 public:
     Array();
     Array(int _size);
-    Array(int _size, double value);
+    Array(int _size, T value);
     Array(const Array& orig);
     ~Array();
 
@@ -31,10 +34,10 @@ public:
     void expand();
 
     int getSize() const;
-    double getData(int index) const;
-    double operator[](int index) const;
+    T getData(int index) const;
+    T operator[](int index) const;
 
-    void setData(int index, double value);
+    void setData(int index, T value);
     bool equal(const Array& rhs) const;
     bool operator==(const Array& rhs) const;
     bool operator!=(const Array& rhs) const;
@@ -45,7 +48,7 @@ public:
     void printMyInfo() const;
 
 private:
-    double *data;
+    T *data;
     int size;
     void setSize(int value);
 };

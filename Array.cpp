@@ -13,54 +13,61 @@
 
 
 #include "Array.h"
-
-Array::Array() : size(10) {
+template <class T>
+Array<T>::Array() : size(10) {
     //    size = 10;
-    data = new double [size];
+    data = new T [size];
     for (int i = 0; i < size; i++) {
         data[i] = i;
     }
 }
 
-Array::Array(int _size) : size(_size) {
+template <class T>
+Array<T>::Array(int _size) : size(_size) {
     size = _size;
-    data = new double [size];
+    data = new T [size];
     for (int i = 0; i < size; i++) {
         data[i] = i;
     }
 }
 
-Array::Array(int _size, double value) : size(_size) {
+template <class T>
+Array<T>::Array(int _size, T value) : size(_size) {
     //    size = _size;
-    data = new double [size];
+    data = new T [size];
     for (int i = 0; i < size; i++) {
         data[i] = value;
     }
 }
 
-Array::Array(const Array& orig) {
+template <class T>
+Array<T>::Array(const Array& orig) {
     setSize(orig.getSize());
-    data = new double [getSize()];
+    data = new T [getSize()];
     for (int i = 0; i < getSize(); i++) {
         setData(i, orig.getData(i));
     }
 }
 
-Array::~Array() {
+template <class T>
+Array<T>::~Array() {
     delete [] data;
 }
 
-int Array::getSize() const {
+template <class T>
+int Array<T>::getSize() const {
     return size;
 }
 
-void Array::setSize(int value) {
+template <class T>
+void Array<T>::setSize(int value) {
     if (value > 0) {
         size = value;
     }
 }
 
-void Array::setData(int index, double value) {
+template <class T>
+void Array<T>::setData(int index, T value) {
     if ((index >= 0) && (index < size)) {
         data[index] = value;
     } else {
@@ -68,7 +75,8 @@ void Array::setData(int index, double value) {
     }
 }
 
-double Array::getData(int index) const {
+template <class T>
+T Array<T>::getData(int index) const {
     if ((index >= 0) && (index < size)) {
         return data[index];
     } else {
@@ -76,7 +84,8 @@ double Array::getData(int index) const {
     }
 }
 
-double Array::operator[](int index) const {
+template <class T>
+T Array<T>::operator[](int index) const {
     if ((index >= 0) && (index < size)) {
         return data[index];
     } else {
@@ -84,15 +93,17 @@ double Array::operator[](int index) const {
     }
 }
 
-void Array::print() const {
+template <class T>
+void Array<T>::print() const {
     for (int i = 0; i < size; i++) {
         cout << data[i] << " ";
     }
     cout << endl;
 }
 
-void Array::expand() {
-    double *localArray = new double[size + 1];
+template <class T>
+void Array<T>::expand() {
+    double *localArray = new T [size + 1];
 
     for (int i = 0; i < size; i++) {
         localArray[i] = data[i];
@@ -113,7 +124,8 @@ void Array::expand() {
     //    delete [] localArray;
 }
 
-bool Array::equal(const Array& rhs) const {
+template <class T>
+bool Array<T>::equal(const Array& rhs) const {
     bool result(true);
 
     if (getSize() != rhs.getSize()) {
@@ -128,7 +140,8 @@ bool Array::equal(const Array& rhs) const {
     return result;
 }
 
-bool Array::operator==(const Array& rhs) const {
+template <class T>
+bool Array<T>::operator==(const Array& rhs) const {
     bool result(true);
 
     if (getSize() != rhs.getSize()) {
@@ -143,7 +156,8 @@ bool Array::operator==(const Array& rhs) const {
     return result;
 }
 
-bool Array::operator!=(const Array& rhs) const {
+template <class T>
+bool Array<T>::operator!=(const Array& rhs) const {
     bool result(false);
 
     if (getSize() != rhs.getSize()) {
@@ -160,16 +174,18 @@ bool Array::operator!=(const Array& rhs) const {
     //    return !(*this == rhs);
 }
 
-void Array::operator=(const Array& rhs) {
+template <class T>
+void Array<T>::operator=(const Array& rhs) {
     delete [] data;
     setSize(rhs.getSize());
-    data = new double [getSize()];
+    data = new T [getSize()];
     for (int i = 0; i < size; i++) {
         data[i] = rhs[i];
     }
 }
 
-const Array Array::operator+(const Array & rhs) const {
+template <class T>
+const Array<T> Array<T>::operator+(const Array & rhs) const {
     Array Cookies(rhs); //Disclaimer, Jonathan made me do this. Bad programming practice. 
     if (getSize() != rhs.getSize()) {
         cout << "Exception" << endl;
@@ -181,14 +197,16 @@ const Array Array::operator+(const Array & rhs) const {
     return Cookies;
 }
 
-const Array Array::operator++() {
+template <class T>
+const Array<T> Array<T>::operator++() {
     for(int i=0; i < getSize(); i++) {
         data[i]++;
     }
     return *this;
 }
 
-const Array Array::operator++(int dummy) {
+template <class T>
+const Array<T> Array<T>::operator++(int dummy) {
     Array temp(*this);
     
     for(int i=0; i < getSize(); i++) {
@@ -197,7 +215,8 @@ const Array Array::operator++(int dummy) {
     return temp;
 }
 
-void Array::printMyInfo() const {
+template <class T>
+void Array<T>::printMyInfo() const {
     cout << "I am at: " << this << endl;
     cout << "My data is at: " << &data << endl;
     cout << "My size is at: " << &size << " with a value of : " << size << endl;
@@ -205,7 +224,8 @@ void Array::printMyInfo() const {
     cout << "The first item in data is: " << *data << endl;
 }
 
-ostream & operator<<(ostream &lhs, const Array &rhs) {
+template <class U>
+ostream & operator<<(ostream &lhs, const Array<U> &rhs) {
     for (int i = 0; i < rhs.getSize(); i++) {
         lhs << rhs[i] << " ";
     }
@@ -213,7 +233,8 @@ ostream & operator<<(ostream &lhs, const Array &rhs) {
     return lhs;
 }
 
-istream & operator>>(istream &lhs, Array &rhs) {
+template <class U>
+istream & operator>>(istream &lhs, Array<U> &rhs) {
     double temp;
     for (int i = 0; i < rhs.getSize(); i++) {
         lhs >> temp;

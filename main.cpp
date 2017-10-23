@@ -13,6 +13,7 @@
 
 #include <cstdlib>
 #include "Array.h"
+#include "Array.cpp"
 
 using namespace std;
 
@@ -21,10 +22,10 @@ using namespace std;
  */
 int main(int argc, char** argv) {
 
-    Array Array1;
-    Array Array2(10);
-    Array Array3(Array2);
-    Array Array4(10, -10);
+    Array <double> Array1;
+    Array <double> Array2(10);
+    Array <double> Array3(Array2);
+    Array <double> Array4(10, -10);
 
     cout << "Test of printInfo for Array1" << endl;
     cout << &Array1 << endl;
